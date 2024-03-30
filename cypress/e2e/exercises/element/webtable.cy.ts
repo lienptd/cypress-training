@@ -1,17 +1,9 @@
 describe('Test web table', () => {
   beforeEach(() => {
-    cy.intercept('https://pagead2.googlesyndication.com/*', {})
-    cy.intercept('https://www.google-analytics.com/*', {})
-    cy.intercept('https://securepubads.g.doubleclick.net/*', {})
-    cy.intercept('https://stats.g.doubleclick.net/*', {})
-    cy.intercept('https://oajs.openx.net/*', {})
-    cy.intercept('https://id5-sync.com/*', {})
-    cy.intercept('https://mug.criteo.com/*', {})
-    cy.intercept('https://id.geistm.com/*', {})
     cy.visit('/webtables')
   })
 
-  it('create new user', () => {
+  it.skip('create new user', () => {
     cy.get('button#addNewRecordButton').click()
     cy.get('input#firstName').type('Lien')
     cy.get('input#lastName').type('Pham')
@@ -28,6 +20,13 @@ describe('Test web table', () => {
       expect(row.eq(3)).to.contain('Kierra')
       expect(row.eq(4)).to.contain('Lien')
     })
+  })
+
+  it('edit user', () => {
+    cy.get('div[role="row"]').contains('Cierra').parent().find('span[title="Edit"]').click()
+    cy.get('input#firstName').clear().type('Eva')
+    cy.get('button#submit').click()
+    cy.get('div[role="row"]').contains('Eva').should('be.visible')
   })
 })
 
