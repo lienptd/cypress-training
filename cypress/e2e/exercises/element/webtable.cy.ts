@@ -3,7 +3,7 @@ describe('Test web table', () => {
     cy.visit('/webtables')
   })
 
-  it.skip('create new user', () => {
+  it('create new user', () => {
     cy.get('button#addNewRecordButton').click()
     cy.get('input#firstName').type('Lien')
     cy.get('input#lastName').type('Pham')
@@ -27,6 +27,11 @@ describe('Test web table', () => {
     cy.get('input#firstName').clear().type('Eva')
     cy.get('button#submit').click()
     cy.get('div[role="row"]').contains('Eva').should('be.visible')
+  })
+
+  it('delete user', () => {
+    cy.get('div[role="row"]').contains('Cierra').parent().find('span[title="Delete"]').click()
+    cy.get('div[role="row"]').contains('Cierra').should('not.exist')
   })
 })
 
