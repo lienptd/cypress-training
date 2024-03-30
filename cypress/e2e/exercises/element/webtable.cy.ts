@@ -33,6 +33,14 @@ describe('Test web table', () => {
     cy.get('div[role="row"]').contains('Cierra').parent().find('span[title="Delete"]').click()
     cy.get('div[role="row"]').contains('Cierra').should('not.exist')
   })
+
+  it('search user', () => {
+    cy.get('#searchBox').type('Alden')
+    cy.get('div[role="row"]').contains('Alden').should('be.visible')
+    cy.get('div[role="row"]').contains('Cierra').should('not.exist')
+    cy.get('div[role="row"]').contains('Kierra').should('not.exist')
+
+  })
 })
 
 
