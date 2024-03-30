@@ -39,7 +39,6 @@ describe('Test web table', () => {
     cy.get('div[role="row"]').contains('Alden').should('be.visible')
     cy.get('div[role="row"]').contains('Cierra').should('not.exist')
     cy.get('div[role="row"]').contains('Kierra').should('not.exist')
-
   })
 })
 
