@@ -4,5 +4,10 @@
     "lib": ["es5", "dom"],
     "types": ["cypress", "node"]
   },
-  "include": ["**/*.ts"]
+  "include": [
+    "**/*.ts",
+    "e2e/exercises/element/textbox.cy.js",
+    "support/commands.js",
+    "e2e/exercises/element/textbox.cy.js"
+  ]
 }
